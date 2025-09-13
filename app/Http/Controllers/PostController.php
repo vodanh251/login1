@@ -12,19 +12,24 @@ class PostController extends Controller
 {
     public function index()
     {
-        $posts = DB::table('posts')->get();
-        return view('posts.index', compact('posts'));
+       $posts = Post::all();
+        return view('post.index', compact('post'));
     }
     public function create()
     {
-        return view('posts.create');
+        return view('post.create');
     }
     public function store(StorePostRequest $request)
     {
-        DB::table('posts')->insert([
-            'title' => $request->get('title'),
-            'content' => $request->get('content'),
-        ]);
+        Post::create([
+        'title'   => $request->get('title'),
+        'content' => $request->get('content'),
+    ]);
+
+    return redirect()->route('posts.index')
+                     ->with('success','Thêm bài viết thành công!');
+}
+
     }
 
 }
