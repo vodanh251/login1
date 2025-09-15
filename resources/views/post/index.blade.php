@@ -20,11 +20,11 @@
             <td>{{ $post->title }}</td>
             <td>{{ $post->content }}</td>
             <td>
-                <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-primary btn-sm">Edit</a>
-                <form action="{{ route('posts.destroy', $post->id) }}" method="POST" style="display:inline;">
+                <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-sm btn-warning">Sửa bài viết</a>
+                <form action="{{ route('posts.destroy', $post->id) }}" method="POST" style="display:inline-block;">
                     @csrf
                     @method('DELETE')
-                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                    <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa bài viết này không?')">Xóa bài viết</button>
                 </form>
             </td>
         </tr>

@@ -45,11 +45,11 @@ route::prefix("posts")->controller(PostController::class)
     Route::get('/', 'index')->name('posts.index');
     Route::get('/create', 'create')->name('posts.create');
     Route::post('/', 'store')->name('posts.store');
-    // Route::get('/{id}/edit', 'edit')->name('posts.edit');
-    // Route::put('/{id}', 'update')->name('posts.update');
-    // Route::get('/{id}/destroy', 'destroy')->name('posts.destroy');
-   
+    Route::get('/{id}/edit', 'edit')->name('posts.edit');
+    Route::put('/{id}', 'update')->name('posts.update');
+    Route::delete('/{id}', 'destroy')->name('posts.destroy');
 });
+
 /*login route*/
 // Route::prefix('categories')->controller(CategoryController::class)
 //     ->name('categories.')
