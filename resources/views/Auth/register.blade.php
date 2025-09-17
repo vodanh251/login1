@@ -1,8 +1,13 @@
-@extends('layouts1.app')
+@extends('layouts1.main')
 
 @section('content')
     <h1 class="mb-4"> Register</h1>
-    <form method="POST" action="#" novalidate>
+    @if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
+    <form method="POST" action="{{ route('postRegister') }}" novalidate>
         @csrf
         <div class="mb-3">
             <label class="form-label">Name</label>
@@ -19,19 +24,19 @@
             @enderror
         </div><div class="mb-3">
             <label class="form-label">password</label>
-            <input type="text" name="password" class="form-control" required>
+            <input type="password" name="password" class="form-control" required>
             @error('password')
                 <div class="text-danger">{{ $message }}</div>
             @enderror
         </div>
         <div class="mb-3">
-            <label class="form-label">Re-password</label>
-            <input type="text" name="Re-password" class="form-control" required>
-            @error('Re-password')
+            <label class="form-label">confirm-password</label>
+            <input type="password" name="confirm_password" class="form-control" required>
+            @error('confirm_password')
                 <div class="text-danger">{{ $message }}</div>
             @enderror
         </div>
-        
+
         <button type="submit" class="btn btn-success">Lưu</button>
     </form>
 @endsection

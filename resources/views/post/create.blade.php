@@ -12,6 +12,7 @@
         <textarea class="form-control" id="content" name="content" rows="5" required></textarea>
     </div>
     <button type="submit" class="btn btn-primary">Lưu bài viết</button>
+    <a href="{{ route('posts.index') }}" class="btn btn-secondary">Hủy</a>
      </form>
 @endsection
 

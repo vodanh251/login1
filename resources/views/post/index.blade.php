@@ -16,7 +16,7 @@
     <tbody>
         @forelse ($posts as $post)
         <tr>
-            <td>{{ $post->id }}</td>
+            <td>{{ $loop->iteration }}</td>
             <td>{{ $post->title }}</td>
             <td>{{ $post->content }}</td>
             <td>

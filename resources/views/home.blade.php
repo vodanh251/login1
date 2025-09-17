@@ -1,18 +1,6 @@
-@extends('layouts.app')
-
-@section('title', 'Trang chủ')
-
-@section('header')
-  Xin chào Laravel!
-@endsection
-
+@extends('layouts1.main')
+@section('title', 'Home Page')
 @section('content')
-  <h2>Nội dung trang chủ</h2>
-  <p>Đây là nội dung chính trong trang home.</p>
-@endsection
-
-@section('sidebar')
-  @parent
-  <h4>Sidebar Home</h4>
-  <p>Thêm thông tin cho sidebar ở trang chủ.</p>
+    <h1>Home Page</h1>  
+    <p>Welcome to the Home Page</p>
 @endsection

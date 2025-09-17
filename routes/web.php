@@ -1,16 +1,28 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+
 use App\Http\Controllers\AuthController;
+
 use Livewire\Volt\Volt;
+
+use app\models\user;
+
+use Illuminate\Http\Request;
+
+use Illuminate\Support\Facades\Auth;
+
+use Illuminate\Support\Facades\Hash;
+
 use App\Http\Controllers\HomeController;
+
 use App\Http\Controllers\UserController;
 
 use App\Http\Controllers\PostController;
 // Route::get('/', function () {
 //     return view('home');
 // })->name('home');
-/* home1 */
+// /* home1 */
 // Route::get('/', function () {
 //     return view('home1');
 // });
@@ -50,19 +62,18 @@ route::prefix("posts")->controller(PostController::class)
     Route::delete('/{id}', 'destroy')->name('posts.destroy');
 });
 
-/*login route*/
-// Route::prefix('categories')->controller(CategoryController::class)
-//     ->name('categories.')
-//     ->group(function () {
-//         Route::get('/', 'index')->name('index');
-//         Route::get('/create', 'create')->name('create');
-//         Route::post('/', 'store')->name('store');
-//         Route::get('/destroyAll', 'destroyAll')->name('destroyAll');
-//         Route::get('/{id}/edit', 'edit')->name('edit');
-//         Route::put('/{id}', 'update')->name('update');
-//         Route::get('/{id}/destroy', 'destroy')->name('destroy');
-//     });
-// Route::get('register', [AuthController::class, 'register'])->name('register');
+/*login register*/  
+    
+    Route::get('register', [AuthController::class, 'register'])->name('register');
+    Route::post('register', [AuthController::class, 'postRegister'])->name('postRegister');     
+    Route::get('login', [AuthController::class, 'login'])->name('login');
+    Route::post('login', [AuthController::class, 'postLogin'])->name('postLogin');     
+    Route::post('logout', [AuthController::class, 'logout'])->name('logout');
+   Route::get('/home', function () {
+    return view('Auth.home');
+})->name('home')->middleware('auth');
+
+
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
